@@ -64,5 +64,4 @@ class Author
     {
         $this->posts->add($post);
     }
-
 }

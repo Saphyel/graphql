@@ -11,7 +11,6 @@ use Overblog\GraphQLBundle\Definition\ArgumentInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
-
 use function count;
 
 class AuthorResolver implements ResolverInterface
@@ -24,9 +23,8 @@ class AuthorResolver implements ResolverInterface
     }
 
     /**
-     * @param ResolveInfo $info
      * @param mixed $value
-     * @param ArgumentInterface $args
+     *
      * @return mixed
      */
     public function __invoke(ResolveInfo $info, $value, ArgumentInterface $args)
@@ -54,12 +52,14 @@ class AuthorResolver implements ResolverInterface
     public function posts(Author $author, ArgumentInterface $args): ConnectionInterface
     {
         $posts = $author->getPosts();
-        $paginator = new Paginator(
+
+        /** @var ConnectionInterface $paginator */
+        $paginator = (new Paginator(
             static function ($offset, $limit) use ($posts) {
                 return $posts->slice($offset, $limit ?? 10);
             }
-        );
+        ))->auto($args, count($posts));
 
-        return $paginator->auto($args, count($posts));
+        return $paginator;
     }
 }

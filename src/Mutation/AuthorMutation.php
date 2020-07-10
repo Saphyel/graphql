@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Overblog\GraphQLBundle\Definition\ArgumentInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\MutationInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use function count;
 
 class AuthorMutation implements MutationInterface
 {
@@ -35,7 +36,7 @@ class AuthorMutation implements MutationInterface
 
         $errors = $this->validator->validate($input);
 
-        if (count($errors) !== 0) {
+        if (0 !== count($errors)) {
         }
 
         $author = new Author();

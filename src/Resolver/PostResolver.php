@@ -21,9 +21,8 @@ class PostResolver implements ResolverInterface
     }
 
     /**
-     * @param ResolveInfo $info
      * @param mixed $value
-     * @param ArgumentInterface $args
+     *
      * @return mixed
      */
     public function __invoke(ResolveInfo $info, $value, ArgumentInterface $args)

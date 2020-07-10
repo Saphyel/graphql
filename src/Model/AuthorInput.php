@@ -11,7 +11,10 @@ class AuthorInput
     /**
      * @Assert\NotBlank()
      */
-    public $email;
+    public string $email;
 
-    public $posts;
+    /**
+     * @var iterable<string>
+     */
+    public iterable $posts;
 }
