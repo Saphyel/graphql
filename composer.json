@@ -1,4 +1,6 @@
 {
+    "name": "saphyel/graphql",
+    "description": "GraphQL demo using symfony",
     "type": "project",
     "license": "proprietary",
     "require": {
