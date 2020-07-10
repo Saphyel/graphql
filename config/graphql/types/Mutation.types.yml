@@ -1,0 +1,10 @@
+Mutation:
+  type: object
+  config:
+    fields:
+      createAuthor:
+        type: Author!
+        resolve: '@=mutation("App\\Mutation\\AuthorMutation::createAuthor", [args])'
+        args:
+          input:
+            type: AuthorInput!

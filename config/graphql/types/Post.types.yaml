@@ -1,0 +1,10 @@
+Post:
+  type: object
+  config:
+    resolveField: '@=resolver("App\\Resolver\\PostResolver", [info, value, args])'
+    fields:
+      title:
+        type: String
+      author:
+        type: AuthorConnection
+        argsBuilder: Relay::ForwardConnection

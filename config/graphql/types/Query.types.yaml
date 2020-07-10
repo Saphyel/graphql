@@ -1,0 +1,16 @@
+Query:
+  type: object
+  config:
+    fields:
+      post:
+        type: Post
+        args:
+          id:
+            type: Int
+        resolve: '@=resolver("App\\Resolver\\PostResolver::resolve", [args["id"]])'
+      author:
+        type: Author
+        args:
+          id:
+            type: Int
+        resolve: '@=resolver("App\\Resolver\\AuthorResolver::resolve", [args["id"]])'
